@@ -1,0 +1,21 @@
+name: Build Docker image
+
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 600
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Build any single images
+      run: |
+        docker build archlinux -f archlinux/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-archlinux-rolling
+        docker build fedora -f archlinux/Dockerfie.full -t significant2500/unofficial-github-codespaces-image:full-fedora-36
+    - name: Time to publish image I guess
+      run: |
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
+        docker push significant2500/unofficial-github-codespaces-image:full-archlinux-rolling
+        docker push significant2500/unofficial-github-codespaces-image:full-fedora-36

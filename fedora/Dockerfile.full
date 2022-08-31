@@ -1,0 +1,8 @@
+FROM fedora
+RUN dnf -y update \
+    && dnf -y install htop sudo git \
+    && dnf groupinstall "Development Tools" "Development Libraries"
+RUN useradd -m -G wheel vscode
+COPY setup-sudo.sh /
+RUN bash setup-sudo.sh
+RUN rm setup-sudo.sh
