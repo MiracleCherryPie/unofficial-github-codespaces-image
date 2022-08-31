@@ -1,6 +1,6 @@
 FROM archlinux
 RUN pacman -Syu --noconfirm \
-    && pacman -S --needed --noconfirm htop base-devel git fakeroot nodejs go meson sudo
+    && pacman -S --needed --noconfirm htop base-devel git fakeroot nodejs go meson sudo cargo jdk-openjdk
 RUN useradd -m -G wheel vscode
 COPY setup-sudo.sh /
 RUN bash setup-sudo.sh
