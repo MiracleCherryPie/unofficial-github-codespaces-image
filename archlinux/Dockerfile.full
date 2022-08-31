@@ -1,0 +1,7 @@
+FROM archlinux
+RUN pacman -Syu --noconfirm \
+    && pacman -S --needed --noconfirm htop base-devel git fakeroot nodejs go meson sudo
+RUN useradd -m -G wheel vscode
+COPY sudo-config.sh /
+RUN bash /sudo-config.sh
+RUN rm sudo-config.sh
