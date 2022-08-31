@@ -1,7 +1,7 @@
 FROM fedora
 RUN dnf -y update \
     && dnf -y install htop sudo git golang nodejs meson cargo java-latest-openjdk-headless java-latest-openjdk-devel \
-    && dnf groupinstall "Development Tools" "Development Libraries" \
+    && dnf groupinstall "Development Tools" "Development Libraries"
 RUN useradd -m -G wheel vscode
 COPY setup-sudo.sh /
 RUN bash setup-sudo.sh
