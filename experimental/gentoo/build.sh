@@ -1,4 +1,4 @@
-echo MAKEOPTS="-j100" >> /etc/portage/make.conf
+echo MAKEOPTS="-j50" >> /etc/portage/make.conf
 mkdir --parents /etc/portage/repos.conf
 cp /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
 emerge-webrsync
