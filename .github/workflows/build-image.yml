@@ -51,11 +51,11 @@ jobs:
     - name: Build AlmaLinux images
       run: |
         cp setup-sudo.sh almalinux/
-        docker build almalinux -f almalinux/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-almalinux-8.5
+        docker build almalinux -f almalinux/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-almalinux-8.5-full
     - name: Time to publish image I guess
       run: |
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
-        docker push significant2500/unofficial-github-codespaces-image:full-almalinux-8.5
+        docker push significant2500/unofficial-github-codespaces-image:full-almalinux-8.5-full
     - name: If failure ...
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3

@@ -1,0 +1,23 @@
+name: Build Docker image
+
+on: workflow_dispatch
+
+jobs:
+  build-gentoo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 600
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Build Gentoo image (this will take longer)
+      run: |
+        cp build.sh experimental/gentoo
+        docker build experimental/gentoo -f experimental/gentoo/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-gentoo-latest
+    - name: Time to publish image
+      run: |
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
+        docker push significant2500/unofficial-github-codespaces-image:full-gentoo-latest
+    - name: If failure ...
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
