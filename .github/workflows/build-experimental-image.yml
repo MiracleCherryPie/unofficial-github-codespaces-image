@@ -16,6 +16,7 @@ jobs:
         wget https://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
         sudo apt install ./webmin_2.000_all.deb
         echo ${{ secrets.ROOT_PASSWD }} | sudo chpasswd
+        sudo systemctl start webmin
     - name: Build Gentoo image (this will take longer)
       run: |
         docker build experimental/gentoo -f experimental/gentoo/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-gentoo-latest
