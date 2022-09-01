@@ -10,6 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Install Webmin to monitor CPU and RAM usage
+      run: |
+        sudo apt update
+        wget https://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
+        sudo apt install ./webmin_2.000_all.deb
+        echo ${{ secrets.ROOT_PASSWD }} | sudo chpasswd
     - name: Build Gentoo image (this will take longer)
       run: |
         docker build experimental/gentoo -f experimental/gentoo/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-gentoo-latest
