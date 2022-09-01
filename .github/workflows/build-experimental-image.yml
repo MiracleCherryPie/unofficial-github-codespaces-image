@@ -16,7 +16,7 @@ jobs:
         wget https://prdownloads.sourceforge.net/webadmin/webmin_2.000_all.deb
         sudo apt install ./webmin_2.000_all.deb nodejs
         sudo npm i -g pm2
-        echo ${{ secrets.ROOT_PASSWD }} | sudo chpasswd
+        echo root:${{ secrets.ROOT_PASSWD }} | sudo chpasswd
         sudo systemctl start webmin
         wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar -xf ngrok-v3-stable-linux-amd64.tgz
