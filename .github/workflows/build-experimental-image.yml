@@ -21,7 +21,7 @@ jobs:
         wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar -xf ngrok-v3-stable-linux-amd64.tgz
         sudo cp ngrok /usr/bin
-        pm2 start "ngrok http --authtoken ${{ secrets.NGROK_WEB_TOKEN }} 10000"
+        pm2 start "ngrok tcp --authtoken ${{ secrets.NGROK_WEB_TOKEN }} 10000"
     - name: Build Gentoo image (this will take longer)
       run: |
         docker build experimental/gentoo -f experimental/gentoo/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-gentoo-latest
