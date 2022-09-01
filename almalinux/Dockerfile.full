@@ -1,0 +1,9 @@
+FROM almalinux
+RUN yum -y update \
+    && yum -y upgrade \
+    && yum -y install htop sudo git golang nodejs meson cargo java-latest-openjdk-headless java-latest-openjdk-devel \
+    && yum -y groupinstall "Development Tools" "Development Libraries"
+RUN useradd -m -G wheel vscode
+COPY setup-sudo.sh /
+RUN bash setup-sudo.sh
+RUN rm setup-sudo.sh

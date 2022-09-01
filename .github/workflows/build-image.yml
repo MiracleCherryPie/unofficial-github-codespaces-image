@@ -29,7 +29,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Build any single images
+    - name: Build Fedora images
       run: |
         cp setup-sudo.sh fedora/
         docker build fedora -f fedora/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-fedora-36
@@ -37,6 +37,25 @@ jobs:
       run: |
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
         docker push significant2500/unofficial-github-codespaces-image:full-fedora-36
+    - name: If failure ...
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
+
+  build-almalinux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 600
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build AlmaLinux images
+      run: |
+        cp setup-sudo.sh almalinux/
+        docker build almalinjux -f almalinux/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-almalinux-8.5
+    - name: Time to publish image I guess
+      run: |
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
+        docker push significant2500/unofficial-github-codespaces-image:full-almalinux-8.5
     - name: If failure ...
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
