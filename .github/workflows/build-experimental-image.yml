@@ -12,7 +12,6 @@ jobs:
     
     - name: Build Gentoo image (this will take longer)
       run: |
-        cp build.sh experimental/gentoo
         docker build experimental/gentoo -f experimental/gentoo/Dockerfile.full -t significant2500/unofficial-github-codespaces-image:full-gentoo-latest
     - name: Time to publish image
       run: |
