@@ -1,3 +1,0 @@
-FROM gentoo/stage3
-COPY build.sh /
-RUN bash /build.sh
