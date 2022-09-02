@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   build-archlinux:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 600
     
     steps:
@@ -23,7 +23,7 @@ jobs:
       uses: mxschmitt/action-tmate@v3
 
   build-fedora:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 600
     
     steps:
@@ -42,7 +42,7 @@ jobs:
       uses: mxschmitt/action-tmate@v3
 
   build-almalinux:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 600
 
     steps:
