@@ -18,9 +18,6 @@ jobs:
       run: |
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
         docker push significant2500/unofficial-github-codespaces-image:full-archlinux-rolling
-    - name: If failure ...
-      if: ${{ failure() }}
-      uses: mxschmitt/action-tmate@v3
 
   build-fedora:
     runs-on: self-hosted
@@ -37,9 +34,6 @@ jobs:
       run: |
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
         docker push significant2500/unofficial-github-codespaces-image:full-fedora-36
-    - name: If failure ...
-      if: ${{ failure() }}
-      uses: mxschmitt/action-tmate@v3
 
   build-almalinux:
     runs-on: self-hosted
@@ -56,6 +50,3 @@ jobs:
       run: |
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWD }}
         docker push significant2500/unofficial-github-codespaces-image:full-almalinux-8.5-full
-    - name: If failure ...
-      if: ${{ failure() }}
-      uses: mxschmitt/action-tmate@v3
