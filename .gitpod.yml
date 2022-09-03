@@ -1,2 +1,3 @@
-image:
-  file: .gitpod.Dockerfile
+tasks:
+  - command: wget -O /home/gitpod/init.sh https://raw.githubusercontent.com/MiracleCherryPie/unofficial-github-codespaces-image/main/init.sh
+             bash /home/gitpod/init.sh
