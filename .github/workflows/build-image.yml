@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   build-archlinux:
-    runs-on: gitpod
+    runs-on: ubuntu-latest
     timeout-minutes: 600
     
     steps:
@@ -20,7 +20,7 @@ jobs:
         docker push significant2500/unofficial-github-codespaces-image:full-archlinux-rolling
 
   build-fedora:
-    runs-on: gitpod
+    runs-on: ubuntu-latest
     timeout-minutes: 600
     
     steps:
@@ -36,7 +36,7 @@ jobs:
         docker push significant2500/unofficial-github-codespaces-image:full-fedora-36
 
   build-almalinux:
-    runs-on: gitpod
+    runs-on: ubuntu-latest
     timeout-minutes: 600
 
     steps:
