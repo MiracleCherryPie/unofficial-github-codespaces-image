@@ -1,0 +1,7 @@
+FROM archlinux
+RUN pacman -Syu --noconfirm
+RUN pacman -S git sudo
+RUN useradd -m -G wheel vscode
+COPY setup-sudo.sh /
+RUN bash setup-sudo.sh
+RUN rm setup-sudo.sh

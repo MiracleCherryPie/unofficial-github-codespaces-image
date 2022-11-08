@@ -1,0 +1,16 @@
+FROM centos:7
+RUN yum update -y
+RUN yum groupinstall 'Development Tools'
+RUN yum install java-1.8.0-openjdk-headless python3 git sudo -y
+RUN useradd -m -G wheel vscode
+COPY setup-sudo.sh /
+RUN bash setup-sudo.sh
+RUN git clone https://github.com/htop-dev/htop
+COPY compile-htop.sh /
+RUN git clone https://github.com/nvm-sh/nvm
+RUN touch /root/.bashrc
+RUN su -l vscode -c 'touch .bashrc'
+RUN bash nvm/install.sh
+RUN su -l vscode -c 'bash /nvm/install.sh'
+RUN bash compile-htop.sh
+RUN rm -rf htop compile-htop.sh setup-sudo.sh
